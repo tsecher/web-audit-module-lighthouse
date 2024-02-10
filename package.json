@@ -1,0 +1,11 @@
+{
+  "name": "web-audit-module-lighthouse",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "lighthouse": "^11.4.0",
+    "web_audit": "^5.0.0-rc1"
+  }
+}
