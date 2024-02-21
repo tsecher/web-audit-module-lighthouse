@@ -136,6 +136,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 			module: this,
 			url: urlWrapper,
 			result: result,
+			report: contextReport
 		};
 		this.context?.eventBus.emit(LighthouseModuleEvents.onResult, eventData);
 		this.context?.eventBus.emit(ModuleEvents.onAnalyseResult, eventData);
