@@ -78,7 +78,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 
 		const result = await lighthouse(
 			wrapper.page.url(),
-			undefined,
+			{output:'html'},
 			undefined,
 			wrapper.page,
 		);
