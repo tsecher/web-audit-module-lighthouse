@@ -6,6 +6,6 @@
   "type": "module",
   "dependencies": {
     "lighthouse": "^11.4.0",
-    "web_audit": "^5.0.0-rc1"
+    "web_audit": "^5.0.0-rc7"
   }
 }

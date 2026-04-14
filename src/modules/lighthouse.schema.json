@@ -1,0 +1,62 @@
+{
+  "id": "lighthouse",
+  "label": "Lighthouse",
+  "description": "The google Lighthous is a scoring system that measures the quality of a web page",
+  "types": [
+    "page"
+  ],
+  "structure": {
+    "lighthouse": {
+      "label": "Lighthouse",
+      "description": "The google Lighthous is a scoring system that measures the quality of a web page",
+      "structure": {
+        "url": {
+          "label": "Url",
+          "description": "The audited page",
+          "type": "string"
+        },
+        "context": {
+          "label": "Context",
+          "description": "The context",
+          "type": "string"
+        },
+        "performance": {
+          "label": "Performance",
+          "description": "The Performance value.",
+          "type": "number",
+          "values": {
+            "target": 1,
+            "min_target": 0.8
+          }
+        },
+        "seo": {
+          "label": "SEO",
+          "description": "The SEO value.",
+          "type": "number",
+          "values": {
+            "target": 1,
+            "min_target": 0.8
+          }
+        },
+        "best-practices": {
+          "label": "Best practices",
+          "description": "The Best practices value.",
+          "type": "number",
+          "values": {
+            "target": 1,
+            "min_target": 0.8
+          }
+        },
+        "accessibility": {
+          "label": "Accessibility",
+          "description": "The Accessibility value.",
+          "type": "number",
+          "values": {
+            "target": 1,
+            "min_target": 0.8
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import {AbstractPuppeteerJourneyModule} from 'web_audit/dist/journey/AbstractPup
 import {PuppeteerJourneyEvents} from 'web_audit/dist/journey/AbstractPuppeteerJourney.js';
 import {ModuleEvents} from 'web_audit/dist/modules/ModuleInterface.js';
 import lighthouse from "lighthouse";
+import schema from "./lighthouse.schema.json" with {type: "json"};
 
 /**
  * Lighthouse Module events.
@@ -38,14 +39,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 	async init(context) {
 		this.context = context;
 		// Install assets coverage store.
-		this.context.config.storage?.installStore('lighthouse', this.context, {
-			url: 'Url',
-			context: 'Context',
-			performance: 'Performance',
-			seo: 'SEO',
-			'best-practices': 'Best Practices',
-			accessibility: 'Accessibility',
-		});
+		this.context.config.storage?.installSchema(this, this.context);
 
 		// Emit.
 		this.context.eventBus.emit(LighthouseModuleEvents.createLighthouseModule, {module: this});
@@ -78,7 +72,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 
 		const result = await lighthouse(
 			wrapper.page.url(),
-			{output:'html'},
+			{output: 'html'},
 			undefined,
 			wrapper.page,
 		);
@@ -142,17 +136,21 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 		this.context?.eventBus.emit(ModuleEvents.onAnalyseResult, eventData);
 
 
-		try{
+		try {
 			this.context?.config?.logger.result(`Lighthouse`, result, urlWrapper.url.toString());
-		}
-		catch(err){
+		} catch (err) {
 			this.context?.config?.logger.error(err);
 		}
 
-		this.context?.config?.storage?.add('lighthouse', this.context, result);
+
+		this.context?.config?.storage?.add(this, 'lighthouse', this.context, result);
 
 		this.context?.eventBus.emit(LighthouseModuleEvents.afterAnalyse, eventData);
 		this.context?.eventBus.emit(ModuleEvents.afterAnalyse, eventData);
+	}
+
+	getSchema() {
+		return schema;
 	}
 
 }
