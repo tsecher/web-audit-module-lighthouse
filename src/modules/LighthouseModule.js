@@ -137,7 +137,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 
 
 		try {
-			this.context?.config?.logger.result(`Lighthouse`, result, urlWrapper.url.toString());
+			this.context?.eventBus.emit(ModuleEvents.onAnalyseSummary, {module: this, group_id:`lighthouse` , url: urlWrapper, summary: result});
 		} catch (err) {
 			this.context?.config?.logger.error(err);
 		}
