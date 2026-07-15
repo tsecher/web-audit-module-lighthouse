@@ -52,7 +52,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 		journey.on(PuppeteerJourneyEvents.JOURNEY_START, async (data) => {
 			this.contextsData = [];
 		});
-		journey.on(PuppeteerJourneyEvents.JOURNEY_NEW_CONTEXT, async (data) => {
+		journey.on(PuppeteerJourneyEvents.JOURNEY_END_CONTEXT, async (data) => {
 			await this.launchLighthouse(data.wrapper, data.name)
 		});
 	}
