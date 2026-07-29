@@ -6,6 +6,6 @@
   "type": "module",
   "dependencies": {
     "lighthouse": "^11.4.0",
-    "web_audit": "https://github.com/tsecher/web-audit.git#loggers"
+    "web_audit": "https://github.com/tsecher/web-audit.git"
   }
 }
