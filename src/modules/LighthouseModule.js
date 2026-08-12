@@ -1,3 +1,4 @@
+import {AppConfig} from 'web_audit/dist/app/conf/AppConfig.js';
 import {AbstractPuppeteerJourneyModule} from 'web_audit/dist/journey/AbstractPuppeteerJourneyModule.js';
 import {PuppeteerJourneyEvents} from 'web_audit/dist/journey/AbstractPuppeteerJourney.js';
 import {ModuleEvents} from 'web_audit/dist/modules/ModuleInterface.js';
@@ -32,6 +33,10 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 		onlyCategories: ['performance', 'seo', 'best-practices', 'accessibility'],
 	};
 	contextsData = {};
+
+	getSchema() {
+		return schema;
+	}
 
 	/**
 	 * {@inheritdoc}
@@ -142,15 +147,25 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 			this.context?.config?.logger.error(err);
 		}
 
-
 		this.context?.config?.storage?.add(this, 'lighthouse', this.context, result);
+
+		// Add reports .html
+		this.initReports(result, contextReport);
 
 		this.context?.eventBus.emit(LighthouseModuleEvents.afterAnalyse, eventData);
 		this.context?.eventBus.emit(ModuleEvents.afterAnalyse, eventData);
 	}
 
-	getSchema() {
-		return schema;
+	/**
+	 * Init reports (html files).
+	 * @param result
+	 * @param contextReport
+	 */
+	initReports(result, contextReport) {
+		if (AppConfig.getConfig().lighthouse.report) {
+			let fileName = new URL(result.url).pathname;
+			fileName = fileName.replaceAll('/', '∕') + '.html'
+			this.context?.config?.storage?.file(this, contextReport.html, `reports/${fileName}`, this.context);
+		}
 	}
-
 }
