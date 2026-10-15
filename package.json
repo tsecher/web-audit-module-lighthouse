@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "lighthouse": "^11.4.0",
+    "lighthouse": "^13.5.0",
     "web_audit": "https://github.com/tsecher/web-audit.git"
   }
 }

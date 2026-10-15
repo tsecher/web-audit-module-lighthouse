@@ -30,7 +30,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 
 	defaultOptions = {
 		output: 'json',
-		onlyCategories: ['performance', 'seo', 'best-practices', 'accessibility'],
+		onlyCategories: ['performance', 'seo', 'best-practices', 'accessibility', 'agentic-browsing'],
 	};
 	contextsData = {};
 
@@ -120,6 +120,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 			context: contextName,
 			url: urlWrapper.url.toString(),
 		};
+
 
 		this.getOptions()
 			?.onlyCategories

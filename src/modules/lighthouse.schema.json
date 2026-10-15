@@ -55,6 +55,15 @@
             "target": 1,
             "min_target": 0.8
           }
+        },
+        "agentic-browsing": {
+          "label": "Agentic browsing",
+          "description": "The agentic browsing value.",
+          "type": "number",
+          "values": {
+            "target": 1,
+            "min_target": 0.8
+          }
         }
       }
     }
