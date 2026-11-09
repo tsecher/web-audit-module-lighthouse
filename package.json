@@ -1,15 +1,12 @@
 {
   "name": "web-audit-module-lighthouse",
-<<<<<<< HEAD
-  "version": "2.0.1",
-=======
   "version": "2.1.0",
->>>>>>> 597591e... 2.1.0
   "main": "index.js",
   "license": "MIT",
   "type": "module",
   "keywords": [
     "web-audit",
+    "web-audit-plugin",
     "lighthouse"
   ],
   "dependencies": {
