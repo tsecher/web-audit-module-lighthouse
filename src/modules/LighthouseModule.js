@@ -163,7 +163,7 @@ export default class LighthouseModule extends AbstractPuppeteerJourneyModule {
 	 * @param contextReport
 	 */
 	initReports(result, contextReport) {
-		if (AppConfig.getConfig().lighthouse.report) {
+		if (AppConfig.getConfig().lighthouse?.report) {
 			let fileName = new URL(result.url).pathname;
 			fileName = fileName.replaceAll('/', '∕') + '.html'
 			this.context?.config?.storage?.file(this, contextReport.html, `reports/${fileName}`, this.context);
